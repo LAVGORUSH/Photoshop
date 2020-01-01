@@ -29,5 +29,9 @@ namespace MyPhotoshop
             if (val < 0 || val > 1) throw new ArgumentException();
             return val;
         }
+        public static double Trim(double val)
+        {
+            return val < 0 ? 0 : (val > 1 ? 1 : val);
+        }
     }
 }
