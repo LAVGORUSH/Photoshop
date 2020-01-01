@@ -4,15 +4,33 @@ namespace MyPhotoshop
 {
 	public class Photo
 	{
-		public int Width { get; set; }
-		public int Height { get; set; }
-		public Pixel[,] Data { get; set; }
+		public readonly int width;
+		public readonly int height;
+		public readonly Pixel[,] data;
 
 		public Photo(int width,int height)
 		{
-			Width = width;
-			Height = height;
-			Data = new Pixel[Width,Height];
+			this.width = width;
+			this.height = height;
+			data = new Pixel[width, height];
+			for (int x = 0; x < width; x++)
+				for (int y = 0; y < height; y++)
+				{
+					data[x, y] = new Pixel();
+				}
+		}
+
+		public Pixel this[int x, int y]
+		{
+			get
+			{
+				return data[x,y];
+			}
+
+			set
+			{
+				data[x, y] = value;
+			}
 		}
 	}
 }

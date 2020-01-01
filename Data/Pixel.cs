@@ -12,21 +12,30 @@ namespace MyPhotoshop
         private double b;
         public double R { 
             get { return r; }
-            set { r = r > 1 ? 1 : value; } 
+            set { r = Check(value); } 
         }
         public double G {
-            get { return r; }
-            set { g = g > 1 ? 1 : value; }
+            get { return g; }
+            set { g = Check(value); }
         }
         public double B {
             get { return b; }
-            set { b = b > 1 ? 1 : value; }
+            set { b = Check(value); }
         }
         public static Pixel operator *(Pixel pixel, double param) {
-            pixel.R *= param;
-            pixel.G *= param;
-            pixel.B *= param;
+            pixel.R = Trim(pixel.R * param);
+            pixel.G = Trim(pixel.G * param);
+            pixel.B = Trim(pixel.B * param);
             return pixel;
+        }
+
+        public double Check(double val) {
+            if (val < 0 || val > 1) throw new ArgumentException();
+            return val;
+        }
+
+        public static double Trim(double val) {
+            return val < 0 ? 0 : (val > 1 ? 1 : val);
         }
     }
 }
