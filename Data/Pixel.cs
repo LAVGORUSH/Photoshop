@@ -7,9 +7,21 @@ namespace MyPhotoshop
 {
     public class Pixel
     {
-        public double R { get; set; }
-        public double G { get; set; }
-        public double B { get; set; }
+        private double r;
+        private double g;
+        private double b;
+        public double R { 
+            get { return r; }
+            set { r = r > 1 ? 1 : value; } 
+        }
+        public double G {
+            get { return r; }
+            set { g = g > 1 ? 1 : value; }
+        }
+        public double B {
+            get { return b; }
+            set { b = b > 1 ? 1 : value; }
+        }
         public static Pixel operator *(Pixel pixel, double param) {
             pixel.R *= param;
             pixel.G *= param;
