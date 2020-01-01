@@ -7,8 +7,27 @@ namespace MyPhotoshop
 {
     public class Pixel
     {
-        public double R;
-        public double G;
-        public double B;
+        private double r;
+        public double R { 
+            get { return r; }
+            set {r = CheckValue(value);}
+        }
+        private double g;
+        public double G
+        {
+            get { return g; }
+            set { g = CheckValue(value); }
+        }
+        private double b;
+        public double B
+        {
+            get { return b; }
+            set { b = CheckValue(value); }
+        }
+
+        public double CheckValue(double val) {
+            if (val < 0 || val > 1) throw new ArgumentException();
+            return val;
+        }
     }
 }
