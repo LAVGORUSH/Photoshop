@@ -20,15 +20,12 @@ namespace MyPhotoshop
 		
 		public Photo Process(Photo original, double[] parameters)
 		{
-			var result=new Photo();
-			result.width=original.width;
-			result.height=original.height;
-			result.data=new double[result.width,result.height,3];
-			
-			for (int x=0;x<result.width;x++)
-				for (int y=0;y<result.height;y++)
-					for (int z=0;z<3;z++)
-						result.data[x,y,z]=original.data[x,y,z]*parameters[0];
+			var result=new Photo(original.Width, original.Height);
+			for (int x = 0; x < result.Width; x++)
+				for (int y = 0; y < result.Height; y++)
+				{
+					result.Data[x, y] = original.Data[x, y] * parameters[0];
+				}
 			return result;
 		}
 	}
