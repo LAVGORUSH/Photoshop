@@ -5,11 +5,12 @@ using System.Text;
 
 namespace MyPhotoshop
 {
-    public class Pixel
+    public struct Pixel
     {
         private double r;
         private double g;
         private double b;
+
         public double R { 
             get { return r; }
             set { r = Check(value); } 
@@ -22,13 +23,7 @@ namespace MyPhotoshop
             get { return b; }
             set { b = Check(value); }
         }
-        public static Pixel operator *(Pixel pixel, double param) {
-            pixel.R = Trim(pixel.R * param);
-            pixel.G = Trim(pixel.G * param);
-            pixel.B = Trim(pixel.B * param);
-            return pixel;
-        }
-
+    
         public double Check(double val) {
             if (val < 0 || val > 1) throw new ArgumentException();
             return val;
