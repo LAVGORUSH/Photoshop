@@ -6,8 +6,7 @@ namespace MyPhotoshop
 	{
 		public readonly int width;
 		public readonly int height;
-		public readonly Pixel[,] data;
-
+		private readonly Pixel[,] data;
 		public Photo(int width, int height) {
 			this.width = width;
 			this.height = height;
@@ -19,6 +18,11 @@ namespace MyPhotoshop
 					data[x, y] = new Pixel();
 				}
 			}
+		}
+
+		public Pixel this[int x, int y]
+		{
+			get{return data[x, y];}
 		}
 	}
 }
