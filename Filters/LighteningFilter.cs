@@ -24,9 +24,7 @@ namespace MyPhotoshop
 			for (int x = 0; x < result.width; x++)
 				for (int y = 0; y < result.height; y++)
 				{
-					result[x, y].R = Pixel.Trim(original[x, y].R * parameters[0]);
-					result[x, y].G = Pixel.Trim(original[x, y].G * parameters[0]);
-					result[x, y].B = Pixel.Trim(original[x, y].B * parameters[0]);
+					result[x, y] = new Pixel(original[x, y].R, original[x, y].G, original[x, y].B) * parameters[0];
 				}
 			return result;
 		}

@@ -11,6 +11,13 @@ namespace MyPhotoshop
         private double g;
         private double b;
 
+        public Pixel(double r, double g, double b) : this()
+        {
+            R = r;
+            G = g;
+            B = b;
+        }
+
         public double R { 
             get { return r; }
             set { r = Check(value); } 
@@ -31,6 +38,10 @@ namespace MyPhotoshop
 
         public static double Trim(double val) {
             return val < 0 ? 0 : (val > 1 ? 1 : val);
+        }
+
+        public static Pixel operator *(Pixel pixel, double param) {
+            return new Pixel(Trim(pixel.R*param), Trim(pixel.G * param), Trim(pixel.B * param));
         }
     }
 }
