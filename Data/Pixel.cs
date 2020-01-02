@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyPhotoshop
 {
-    public class Pixel
+    public struct Pixel
     {
         private double r;
         public double R { 
@@ -32,6 +32,13 @@ namespace MyPhotoshop
         public static double Trim(double val)
         {
             return val < 0 ? 0 : (val > 1 ? 1 : val);
+        }
+
+        public Pixel(double r, double g, double b) : this()
+        {
+            R = r;
+            G = g;
+            B = b;
         }
     }
 }
