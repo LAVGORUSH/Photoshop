@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Pixel.cs" />
+    <Compile Include="Filters\AbstractPixelFilter.cs" />
     <Compile Include="Filters\GrayFilter.cs" />
     <Compile Include="Filters\ParameterInfo.cs" />
     <Compile Include="Main.cs" />
