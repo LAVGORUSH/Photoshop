@@ -6,16 +6,12 @@ namespace MyPhotoshop
 	{
 		public ParameterInfo[] GetParameters()
 		{
-			return new []
-			{
-				new ParameterInfo { Name="Коэффициент", MaxValue=10, MinValue=0, Increment=0.1, DefaultValue=1 }
-				
-			};
+			return new ParameterInfo[0];
 		}
 		
 		public override string ToString ()
 		{
-			return "Отенки серого";
+			return "Оттенки серого";
 		}
 		
 		public Photo Process(Photo original, double[] parameters)
@@ -24,9 +20,16 @@ namespace MyPhotoshop
 			for (int x = 0; x < result.width; x++)
 				for (int y = 0; y < result.height; y++)
 				{
-					result[x, y] = new Pixel(original[x, y].R, original[x, y].R, original[x, y].R) * parameters[0];
+					result[x, y] = ProcessPixel(original[x, y]);
 				}
 			return result;
+		}
+
+		public Pixel ProcessPixel(Pixel original)
+		{
+			var lightness = original.R + original.G + original.B;
+			lightness /= 3;
+			return new Pixel(lightness, lightness, lightness);
 		}
 	}
 }

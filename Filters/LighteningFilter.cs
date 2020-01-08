@@ -24,9 +24,14 @@ namespace MyPhotoshop
 			for (int x = 0; x < result.width; x++)
 				for (int y = 0; y < result.height; y++)
 				{
-					result[x, y] = new Pixel(original[x, y].R, original[x, y].G, original[x, y].B) * parameters[0];
+					result[x, y] = ProcessPixel(original[x, y], parameters[0]);
 				}
 			return result;
+		}
+
+		public Pixel ProcessPixel(Pixel original, double param)
+		{
+			return original * param;
 		}
 	}
 }
