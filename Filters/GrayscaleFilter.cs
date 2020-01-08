@@ -20,11 +20,16 @@ namespace MyPhotoshop
 			for (int x = 0; x < result.width; x++)
 				for (int y = 0; y < result.height; y++)
 				{
-					var lightness = original[x, y].R + original[x, y].G + original[x, y].B;
-					lightness /= 3;
-					result[x, y]  = new Pixel(lightness, lightness, lightness);
+					result[x, y]  = ProcessPixel(original[x, y], parameters);
 				}
 			return result;
+		}
+
+		public Pixel ProcessPixel(Pixel original, double[] parameters)
+		{
+			var lightness = original.R + original.G + original.B;
+			lightness /= 3;
+			return new Pixel(lightness, lightness, lightness);
 		}
 	}
 }
