@@ -40,5 +40,9 @@ namespace MyPhotoshop
             G = g;
             B = b;
         }
+
+        public static Pixel operator *(Pixel p, double c) {
+            return new Pixel(Trim(p.R * c), Trim(p.G * c), Trim(p.B * c));
+        }
     }
 }
