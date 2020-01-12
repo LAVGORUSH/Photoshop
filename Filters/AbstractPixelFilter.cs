@@ -2,14 +2,13 @@ using System;
 
 namespace MyPhotoshop
 {
-	public abstract class AbstractPixelFilter : IFilter
+	public abstract class AbstractPixelFilter : ParametrizedFilter
 	{
-		public virtual ParameterInfo[] GetParameters()
+		public AbstractPixelFilter(IParameters parameters) : base(parameters)
 		{
-			return new ParameterInfo[0];
 		}
-		
-		public Photo Process(Photo original, double[] parameters)
+
+		public override Photo Process(Photo original, IParameters parameters)
 		{
 			var result=new Photo(original.width, original.height);
 			for (int x = 0; x < result.width; x++)
@@ -20,7 +19,7 @@ namespace MyPhotoshop
 			return result;
 		}
 
-		public abstract Pixel ProcessPixel(Pixel original, double[] parameters);
+		public abstract Pixel ProcessPixel(Pixel original, IParameters parameters);
 	}
 }
 
