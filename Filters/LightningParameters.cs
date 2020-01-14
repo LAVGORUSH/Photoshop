@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyPhotoshop
 {
-    class LightningParameters : IParameters
+    public class LightningParameters : IParameters
     {
         public double Coeficient { get; set; }
         public ParameterInfo[] GetDesсription()
